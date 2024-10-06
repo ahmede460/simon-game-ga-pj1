@@ -1,0 +1,26 @@
+// initialize a Boolean "isRunning" and default this to false to detect when the user started the game and the winner is not decided yet.
+// initialize a Boolean "lose" and default this to false, this will be used to detect when the user has lost.
+// initialize two empty arrays "computerChoice" and "userChoice to use for the simon sequence that the computer will use and the sequence that the user will use"
+// initialize a variable called "level" and set it's value to 0
+// get the start button and cache it in a variable called "startButton" to detect when the user wants to start the game
+// get the game buttons and cache them in a variable called "gameButtons"
+// get the h1 and cache it in a variable called "messageElement" 
+// get the level indicator h2 and cache it in a variable called "levelIndicatorElement" 
+//initialize an event listeners which are based on 'click' the first is for the startButton and the callback will be the gameStart() function.
+//get the game buttons (four squares) and add an event listener to each one of the and the function will be the compare function which will be used to compare the user choice and the computer choices. The same function also will evaluate the length of the arrays to know if the level is passed or failed.
+// generate a fixed amount of random numbers from 0 to 3 to represent 4 choices .
+// push the choices to the array of computerChoice.
+// The game would start by clicking a button.
+// once you click the button a Boolean variable (isRunning) will change which will indicate the game has started.
+// indicate to the user that the game has started by displaying a message in the html by updating the messageElement
+// indicate to the user in the html that it's simon's turn by updating messageElement
+// loop through the array and indicate to the user the sequence of the array by (animating, slight change of color, sound) by using the gameButtons cached variable.
+// indicate that it's the user's turn in the html by using the messageElement.
+// get the ID of the game button clicked which i've setup an event listener in the beginning and push it to the userChoice array.
+// compare the userChoice with the computerChoice after each click by comparing the value at each index if not empty.
+// compare the array's length and once they match and they are equal to each other // this will indicate that the user passed the level otherwise this will indicate that the user failed.
+// if the user pass I will add 1 to the current level and I will display the level to the user. indicate the level and a success indicator for the user if he passes using levelIndicatorElement. 
+// if the user fails then lose variable will turn to true and game will end. give an indicator to the user that the user has lost using messageElement.
+// If the user pass the level I will clear the userChoice array.
+// I will add more another fixed amount of random numbers to the computerChoice array.
+// the game will repeat and levels will be added until the user lose.
