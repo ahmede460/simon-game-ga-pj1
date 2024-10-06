@@ -1,0 +1,34 @@
+body {
+    background-color: black;
+}
+
+.flex-row {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    
+}
+
+
+.square {
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    color: white;
+    border-radius: 5%;
+}
+
+
+#green {
+    background-color: green;
+}
+
+#red {
+    background-color: red;
+}
+#yellow {
+    background-color: yellow;
+}
+#blue {
+    background-color: blue;
+}
