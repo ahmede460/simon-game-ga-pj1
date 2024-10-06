@@ -1,6 +1,7 @@
 const gameSquares = document.querySelectorAll(".square")
 const startButton = document.querySelector(".start-button")
 const messageElement = document.querySelector("#user-message")
+const levelElement = document.querySelector("#level")
 let userChoices = []
 let computerChoices = []
 let lose = false
@@ -16,6 +17,7 @@ function addRandomNumbers() {
 }
 
 addRandomNumbers()
+levelElement.innerText = `Level: ${level}`
 
 function userPlay(event) {
     userChoices.push(event.target.id)
