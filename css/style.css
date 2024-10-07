@@ -15,6 +15,14 @@ body {
 
 }
 
+#level {
+    margin-left: 200px;
+    transition: 300ms ease;
+}
+.text-grow{
+    font-size: 20px;
+}
+
 .flex-row {
     display: flex;
     gap: 10px;
