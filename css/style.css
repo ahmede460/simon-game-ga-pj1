@@ -178,4 +178,15 @@ ul > h1 {
   
 .color-blind{
     filter: contrast(0);
+    
+}
+
+.color-blind:hover{
+    filter: contrast(0);
+    filter: brightness(0);
+    
+}
+
+#difficulty{
+    margin: -57px 0px 50px 3px;
 }

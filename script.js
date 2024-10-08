@@ -1,7 +1,11 @@
 const gameSquares = document.querySelectorAll(".square")
 const startButton = document.querySelector(".start-button")
 const messageElement = document.querySelector("#user-message")
+const difficultyElement = document.querySelector("#difficulty")
 const levelElement = document.querySelector("#level")
+const easyModeButton = document.querySelector("#easy-mode-button")
+const normalModeButton = document.querySelector("#normal-mode-button")
+const hardModeButton = document.querySelector("#hard-mode-button")
 const darkModeButton = document.querySelector("#dark-mode")
 const colorBlindButton = document.querySelector("#color-blind-button")
 const soundEnableDisableButton = document.querySelector("#sound-button")
@@ -13,6 +17,8 @@ let soundEnabled = true
 let colorBlind = false
 const GAMECOLORS = ["green", "red", "yellow", "blue"]
 let level = 1
+let numbersToAdd = 2
+let gameSpeed = 1000
 const audio = {
     "red": new Audio('./soundeffects/red.mp3'),
     "green": new Audio('./soundeffects/green.mp3'),
@@ -57,7 +63,7 @@ function animateSquare(selector){
         
         setTimeout(function () {
             currentSquare.classList.toggle("get-rounder")
-        }, 500)})
+        }, (gameSpeed / 2))})
     }
 
     function playSequence() {
@@ -65,18 +71,18 @@ function animateSquare(selector){
             startButton.remove()
         }
         messageElement.innerText = "Simon Says!"
-        let delay = 1000
+        let delay = gameSpeed
         for (const choice of computerChoices) {
             setTimeout(function () {
                animateSquare(choice)
             }, delay)
-            delay += 1000
+            delay += gameSpeed
         }
         setTimeout(function (){
             messageElement.innerText = "Your Turn! :)"
             enableDisableGameButtons()
             buttonsOn = true        
-        }, 1000 * (computerChoices.length + 1))
+        }, gameSpeed * (computerChoices.length + 1))
         console.log(computerChoices)
     }
 
@@ -101,14 +107,11 @@ function animateSquare(selector){
             playSequence()
         }, 2000)
         
-        
-
-
     }
 
     function addRandomNumbers() {
 
-        for (i = 0; i < 1; i++) {
+        for (i = 0; i < numbersToAdd; i++) {
             computerChoices.push(GAMECOLORS[Math.floor(Math.random() * 3)])
         }
     
@@ -164,17 +167,38 @@ function animateSquare(selector){
         else {
             colorBlind = true
             colorBlindButton.innerText = "Disable Color Blind Mode"}
-            
+
+    }
+
+    function enableEasyMode(){
+        gameSpeed = 2000
+        difficultyElement.innerText = "Difficulty: Easy"
+        numbersToAdd = 1
+    }
+
+    function enableNormalMode(){
+        gameSpeed = 1000
+        difficultyElement.innerText = "Difficulty: Normal"
+        numbersToAdd = 2
+    }
+
+    function enableHardMode(){
+        gameSpeed = 500
+        difficultyElement.innerText = "Difficulty: Hard"
+        numbersToAdd = 3
     }
 
 
-    // Event Listeners
 
+    // Event Listeners
 
     startButton.addEventListener("click", playSequence)
     darkModeButton.addEventListener("click", enableDarkMode)
     soundEnableDisableButton.addEventListener("click", enableDisableSound)
     colorBlindButton.addEventListener("click", enableDisableColorBlindMode)
+    easyModeButton.addEventListener("click", enableEasyMode)
+    normalModeButton.addEventListener("click", enableNormalMode)
+    hardModeButton.addEventListener("click", enableHardMode)
 
     // Game setter
 
