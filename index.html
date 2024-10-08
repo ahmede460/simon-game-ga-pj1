@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,31 @@
     <script defer src="./script.js"></script>
 
 </head>
+
 <body>
-    <button class="start-button">START</button>
-    <label id="level" for="">Level: </label>
-    <h1 id="user-message">some message for the user</h1>
-    <div class="flex-row">
-        <div id="green" class="square"></div>
-        <div  id="red" class="square"></div>
+    <div id="top-header">Welcome to Simon Says!
+        <button id="dark-mode">Dark Mode</button>
     </div>
-    <div class="flex-row">
-        <div id="yellow" class="square"></div>
-        <div id="blue" class="square"></div>
+    <div class="flex-container"> <button class="start-button">START</button>
+        <label id="level" class="level" for="">Level: </label>
+        <h1 id="user-message">Click Start to Play</h1>
+        <div class="game-buttons">
+            
+            <div class="flex-row">
+                <div id="green" class="square"></div>
+                <div id="red" class="square"></div>
+            </div>
+            <div class="flex-row">
+                <div id="yellow" class="square"></div>
+                <div id="blue" class="square"></div>
+
+            </div>
+        </div>
     </div>
 
 
-    
+
+
 </body>
+
 </html>

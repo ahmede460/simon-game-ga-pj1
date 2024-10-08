@@ -2,9 +2,11 @@ const gameSquares = document.querySelectorAll(".square")
 const startButton = document.querySelector(".start-button")
 const messageElement = document.querySelector("#user-message")
 const levelElement = document.querySelector("#level")
+const DarkModeButton = document.querySelector("#dark-mode")
 let userChoices = []
 let computerChoices = []
 let lose = false
+let buttonsOn = false
 const GAMECOLORS = ["green", "red", "yellow", "blue"]
 let level = 1
 const audio = {
@@ -28,9 +30,11 @@ function userPlay(event) {
     evaluateRound()
     if(lose === true){
         messageElement.innerText = "You lost :(("
+        enableDisableGameButtons()
     }
     else if (lose === false && userChoices.length === computerChoices.length){
         messageElement.innerText = "Passed the Level!!"
+        enableDisableGameButtons()
         levelUp()
     }
     console.log(lose)
@@ -54,7 +58,6 @@ function animateSquare(selector){
         if (startButton){
             startButton.remove()
         }
-
         messageElement.innerText = "Simon Says!"
         let delay = 1000
         for (const choice of computerChoices) {
@@ -65,11 +68,10 @@ function animateSquare(selector){
         }
         setTimeout(function (){
             messageElement.innerText = "Your Turn! :)"
+            enableDisableGameButtons()
+            buttonsOn = true        
         }, 1000 * (computerChoices.length + 1))
         console.log(computerChoices)
-        for(const gameSquare of gameSquares){
-            gameSquare.style.cursor = "pointer"
-        }
     }
 
 
@@ -106,11 +108,46 @@ function animateSquare(selector){
     
     }
 
+    function enableDisableGameButtons(){
+        if (buttonsOn){
+            for (const gameSquare of gameSquares) {
+                gameSquare.removeEventListener("click", userPlay)
+                gameSquare.style.cursor = "not-allowed"
+            }
+            buttonsOn = false
+        }
+        else {
+            for (const gameSquare of gameSquares) {
+                gameSquare.addEventListener("click", userPlay)
+                gameSquare.style.cursor = "pointer"
+                
+            }
+            buttonsOn = true
+        }
+    }
+
+    function enableDarkMode(){
+        document.querySelector("body").classList.toggle("dark-mode")
+        if (document.querySelector("body").classList.contains("dark-mode")){
+            DarkModeButton.innerText = "Light Mode"
+        }
+        else {
+            DarkModeButton.innerText = "Dark Mode"
+        }
+    }
+
 
     // Event Listeners
 
-    for (const gameSquare of gameSquares) {
-        gameSquare.addEventListener("click", userPlay)
-    }
-    
+
     startButton.addEventListener("click", playSequence)
+    DarkModeButton.addEventListener("click", enableDarkMode)
+
+
+    // Game setter
+
+    for (const gameSquare of gameSquares) {
+        gameSquare.style.cursor = "not-allowed"
+    }
+
+    
