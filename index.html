@@ -11,14 +11,32 @@
 </head>
 
 <body>
-    <div id="top-header">Welcome to Simon Says!
-        <button id="dark-mode">Dark Mode</button>
-    </div>
+    <header class="header"> <label id="hamburger-icon" for="hamburger-btn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </label>
+        <input id="hamburger-btn" type="checkbox" />
+
+         <nav>
+      <ul class="menu">
+        <h1>Game Setting</h1>
+       <button id="dark-mode" class="menu-button">Enable Dark Mode</button>
+       <button id="sound-button" class="menu-button">Disable Audio</button>
+       <button id="" class="menu-button">Enable Color Blind Mode</button>
+      </ul>
+    </nav>
+
+        <div id="top-header">Welcome to Simon Says!
+            
+        </div>
+    </header>
+
     <div class="flex-container"> <button class="start-button">START</button>
         <label id="level" class="level" for="">Level: </label>
         <h1 id="user-message">Click Start to Play</h1>
         <div class="game-buttons">
-            
+
             <div class="flex-row">
                 <div id="green" class="square"></div>
                 <div id="red" class="square"></div>

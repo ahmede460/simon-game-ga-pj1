@@ -2,11 +2,15 @@ const gameSquares = document.querySelectorAll(".square")
 const startButton = document.querySelector(".start-button")
 const messageElement = document.querySelector("#user-message")
 const levelElement = document.querySelector("#level")
-const DarkModeButton = document.querySelector("#dark-mode")
+const darkModeButton = document.querySelector("#dark-mode")
+const colorBlindButton = document.querySelector("#color-blind-button")
+const soundEnableDisableButton = document.querySelector("#sound-button")
 let userChoices = []
 let computerChoices = []
 let lose = false
 let buttonsOn = false
+let soundEnabled = true
+let colorBlind = false
 const GAMECOLORS = ["green", "red", "yellow", "blue"]
 let level = 1
 const audio = {
@@ -46,7 +50,9 @@ function userPlay(event) {
 function animateSquare(selector){
     setTimeout(function () {
         const currentSquare = document.querySelector(`#${selector}`)
+        if(soundEnabled){
         audio[`${selector}`].play()
+        }
         currentSquare.classList.toggle("get-rounder")
         
         setTimeout(function () {
@@ -129,11 +135,36 @@ function animateSquare(selector){
     function enableDarkMode(){
         document.querySelector("body").classList.toggle("dark-mode")
         if (document.querySelector("body").classList.contains("dark-mode")){
-            DarkModeButton.innerText = "Light Mode"
+            darkModeButton.innerText = "Disable Dark Mode"
         }
         else {
-            DarkModeButton.innerText = "Dark Mode"
+            darkModeButton.innerText = "Enable Dark Mode"
         }
+    }
+
+    function enableDisableSound(){
+        if (soundEnabled){
+            soundEnabled = false
+            soundEnableDisableButton.innerText = "Enable Audio"
+        }
+        else {
+            soundEnabled = true
+            soundEnableDisableButton.innerText = "Disable Audio"
+        }
+    }
+
+    function enableDisableColorBlindMode(){
+        for (const gameSquare of gameSquares){
+            gameSquare.classList.toggle("color-blind")
+        }
+        if (colorBlind){
+            colorBlind = false
+            colorBlindButton.innerText = "Enable Color Blind Mode"
+        }
+        else {
+            colorBlind = true
+            colorBlindButton.innerText = "Disable Color Blind Mode"}
+            
     }
 
 
@@ -141,8 +172,9 @@ function animateSquare(selector){
 
 
     startButton.addEventListener("click", playSequence)
-    DarkModeButton.addEventListener("click", enableDarkMode)
-
+    darkModeButton.addEventListener("click", enableDarkMode)
+    soundEnableDisableButton.addEventListener("click", enableDisableSound)
+    colorBlindButton.addEventListener("click", enableDisableColorBlindMode)
 
     // Game setter
 
