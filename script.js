@@ -7,6 +7,9 @@ const easyModeButton = document.querySelector("#easy-mode-button")
 const normalModeButton = document.querySelector("#normal-mode-button")
 const hardModeButton = document.querySelector("#hard-mode-button")
 const darkModeButton = document.querySelector("#dark-mode")
+const endGameElement = document.querySelector("#end-game-overlay")
+const endGameLevelElement = document.querySelector("#end-game")
+const endGameSubmit = document.querySelector("#submit")
 const colorBlindButton = document.querySelector("#color-blind-button")
 const soundEnableDisableButton = document.querySelector("#sound-button")
 let userChoices = []
@@ -39,17 +42,16 @@ function userPlay(event) {
     animateSquare(event.target.id)
     evaluateRound()
     if(lose === true){
-        messageElement.innerText = "You lost :(("
+        messageElement.innerText = "You lost 😟"
         enableDisableGameButtons()
+        endGameElement.classList.toggle("no-overlay")
+        endGameLevelElement.innerText = `You've reached level ${level}`
     }
     else if (lose === false && userChoices.length === computerChoices.length){
-        messageElement.innerText = "Passed the Level!!"
+        messageElement.innerText = "Passed the Level!! ✅"
         enableDisableGameButtons()
         levelUp()
     }
-    console.log(lose)
-    console.log(userChoices.length)
-    console.log(computerChoices.length)
 
 }
 
@@ -188,10 +190,27 @@ function animateSquare(selector){
         numbersToAdd = 3
     }
 
+    function submitName(){
+        updateHighscore()
+        endGameElement.classList.toggle("no-overlay")
+        lose = false
+        computerChoices = []
+        userChoices = []
+        level = 1
+        levelElement.innerText = `Level: ${level}`
+        addRandomNumbers()
+        playSequence()
+    }
 
+
+    function updateHighscore(){
+        newLi = document.createElement("li")
+        newLi.innerText = `🔥${document.querySelector("#username").value}🔥 - Level ${level}`
+        document.querySelector("#high-score").appendChild(newLi)
+
+    }
 
     // Event Listeners
-
     startButton.addEventListener("click", playSequence)
     darkModeButton.addEventListener("click", enableDarkMode)
     soundEnableDisableButton.addEventListener("click", enableDisableSound)
@@ -199,6 +218,7 @@ function animateSquare(selector){
     easyModeButton.addEventListener("click", enableEasyMode)
     normalModeButton.addEventListener("click", enableNormalMode)
     hardModeButton.addEventListener("click", enableHardMode)
+    endGameSubmit.addEventListener("click", submitName)
 
     // Game setter
 
@@ -206,4 +226,3 @@ function animateSquare(selector){
         gameSquare.style.cursor = "not-allowed"
     }
 
-    
