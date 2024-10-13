@@ -247,8 +247,7 @@ function animateSquare(selector){
             hints -= 1
             document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         }
-        else {
-            
+        else if (hints === 0){
             alert("You are on your own, no more hints :)")
         }
 
