@@ -188,10 +188,39 @@ ul > h1 {
 }
 
 #difficulty{
-    margin: -57px 0px 50px 3px;
+    margin: -57px 0px 10px 3px;
 }
 
-#overlay {
+.left-side-text {
+    margin: 0px 0px 0px 3px;
+}
+#high-score{
+    margin: -67px 5px 50px 0px;
+    text-align: right;
+}
+
+#hints-button{
+    position: relative;
+    bottom: 23px;
+    left: 60px;
+    padding: 7px px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10%;
+    border-style: none;
+    background-color:  rgb(77, 23, 255);
+    transition: 500ms ease;
+    filter: drop-shadow();
+
+}
+
+#hints-button:hover{
+    background-color: blanchedalmond;
+}
+
+
+
+.overlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,8 +237,11 @@ ul > h1 {
     transition: 1s ease;
 }
 
+.no-overlay {
+    display: none;
+}
 
-#overlay > p {
+.overlay > p {
     font-size: 20px;
 }
 

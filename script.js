@@ -12,6 +12,11 @@ const endGameLevelElement = document.querySelector("#end-game")
 const endGameSubmit = document.querySelector("#submit")
 const colorBlindButton = document.querySelector("#color-blind-button")
 const soundEnableDisableButton = document.querySelector("#sound-button")
+const hintsButton = document.querySelector("#hints-button")
+let highScores = [{
+    name: "Ahmed Jaafar",
+    levelReached: 1,
+}]
 let userChoices = []
 let computerChoices = []
 let lose = false
@@ -20,6 +25,7 @@ let soundEnabled = true
 let colorBlind = false
 const GAMECOLORS = ["green", "red", "yellow", "blue"]
 let level = 1
+let hints = 1
 let numbersToAdd = 2
 let gameSpeed = 1000
 const audio = {
@@ -85,7 +91,8 @@ function animateSquare(selector){
             enableDisableGameButtons()
             buttonsOn = true        
         }, gameSpeed * (computerChoices.length + 1))
-        console.log(computerChoices)
+
+        hintsButton.addEventListener("click", playHint)
     }
 
 
@@ -108,6 +115,7 @@ function animateSquare(selector){
         setTimeout(function (){
             playSequence()
         }, 2000)
+        addHint()
         
     }
 
@@ -197,6 +205,8 @@ function animateSquare(selector){
         computerChoices = []
         userChoices = []
         level = 1
+        hints = 1
+        hintsButton.innerText = `Hints: ${hints}`
         levelElement.innerText = `Level: ${level}`
         addRandomNumbers()
         playSequence()
@@ -204,10 +214,47 @@ function animateSquare(selector){
 
 
     function updateHighscore(){
-        newLi = document.createElement("li")
-        newLi.innerText = `🔥${document.querySelector("#username").value}🔥 - Level ${level}`
-        document.querySelector("#high-score").appendChild(newLi)
+        highScores.push({
+            name: document.querySelector("#username").value,
+            levelReached: level
+        })
 
+        sortedTop3 = highScores.sort((a, b) => b.levelReached - a.levelReached)
+
+        console.log(sortedTop3)
+
+        document.querySelector("#high-score").innerHTML = "Top 3 High Scores"
+        for (i=0;i<3;i++){
+            if(sortedTop3[i]){
+            newLi = document.createElement("li")
+            newLi.innerText = `🔥${sortedTop3[i].name}🔥 - Level ${sortedTop3[i].levelReached}`
+            document.querySelector("#high-score").appendChild(newLi)
+            }
+        }
+
+
+    }
+
+    function playHint(){
+        if(hints > 0 && buttonsOn){
+            enableDisableGameButtons()
+            document.querySelector("#hints-button").style.cursor = "pointer"
+            playSequence()
+            hints -= 1
+            document.querySelector("#hints-text").innerText = `Hints: ${hints}`
+        }
+        else {
+            hintsButton.removeEventListener("click", playHint)
+            document.querySelector("#hints-button").style.cursor = "not-allowed"
+        }
+
+    }
+
+    function addHint(){
+        if (level % 3 == 0){
+            hints +=1
+            document.querySelector("#hints-text").innerText = `Hints: ${hints}`
+        }
     }
 
     // Event Listeners
@@ -219,6 +266,7 @@ function animateSquare(selector){
     normalModeButton.addEventListener("click", enableNormalMode)
     hardModeButton.addEventListener("click", enableHardMode)
     endGameSubmit.addEventListener("click", submitName)
+    hintsButton.addEventListener("click", playHint)
 
     // Game setter
 
