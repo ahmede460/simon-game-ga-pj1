@@ -87,7 +87,7 @@ function animateSquare(selector){
             delay += gameSpeed
         }
         setTimeout(function (){
-            messageElement.innerText = "Your Turn! :)"
+            messageElement.innerText = "Your Turn! 😉"
             enableDisableGameButtons()
             buttonsOn = true        
         }, gameSpeed * (computerChoices.length + 1))
@@ -132,6 +132,8 @@ function animateSquare(selector){
             for (const gameSquare of gameSquares) {
                 gameSquare.removeEventListener("click", userPlay)
                 gameSquare.style.cursor = "not-allowed"
+                hintsButton.removeEventListener("click", playHint)
+                document.querySelector("#hints-button").style.cursor = "not-allowed"
             }
             buttonsOn = false
         }
@@ -139,6 +141,8 @@ function animateSquare(selector){
             for (const gameSquare of gameSquares) {
                 gameSquare.addEventListener("click", userPlay)
                 gameSquare.style.cursor = "pointer"
+                hintsButton.addEventListener("click", playHint)
+                document.querySelector("#hints-button").style.cursor = "pointer"
                 
             }
             buttonsOn = true
@@ -206,7 +210,7 @@ function animateSquare(selector){
         userChoices = []
         level = 1
         hints = 1
-        hintsButton.innerText = `Hints: ${hints}`
+        document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         levelElement.innerText = `Level: ${level}`
         addRandomNumbers()
         playSequence()
@@ -237,15 +241,15 @@ function animateSquare(selector){
 
     function playHint(){
         if(hints > 0 && buttonsOn){
-            enableDisableGameButtons()
             document.querySelector("#hints-button").style.cursor = "pointer"
+            enableDisableGameButtons()
             playSequence()
             hints -= 1
             document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         }
         else {
-            hintsButton.removeEventListener("click", playHint)
-            document.querySelector("#hints-button").style.cursor = "not-allowed"
+            
+            alert("You are on your own, no more hints :)")
         }
 
     }
