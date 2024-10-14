@@ -13,6 +13,9 @@ const endGameSubmit = document.querySelector("#submit")
 const colorBlindButton = document.querySelector("#color-blind-button")
 const soundEnableDisableButton = document.querySelector("#sound-button")
 const hintsButton = document.querySelector("#hints-button")
+const modalCloseButton = document.querySelector(".close")
+const modalText = document.querySelector("#modal-text")
+const modalElement = document.querySelector("#alert-modal")
 let highScores = [{
     name: "Ahmed Jaafar",
     levelReached: 1,
@@ -248,7 +251,12 @@ function animateSquare(selector){
             document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         }
         else if (hints === 0){
-            alert("You are on your own, no more hints :)")
+
+            modalOpen("You are on your own, no more hints 😟")
+            
+        }
+        else {
+            modalOpen("Press the START button to start the game 😊")
         }
 
     }
@@ -258,6 +266,16 @@ function animateSquare(selector){
             hints +=1
             document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         }
+    }
+
+    function modalClose(){
+        modalElement.style.display = "none"
+    }
+
+    function modalOpen(message){
+        modalText.innerText = message
+        modalElement.style.display = "block"
+
     }
 
     // Event Listeners
@@ -270,6 +288,12 @@ function animateSquare(selector){
     hardModeButton.addEventListener("click", enableHardMode)
     endGameSubmit.addEventListener("click", submitName)
     hintsButton.addEventListener("click", playHint)
+    modalCloseButton.addEventListener("click", modalClose)
+    window.onclick = function(event) {
+        if(event.target == modalElement){
+            modalElement.style.display = "none"
+        }
+    }
 
     // Game setter
 
