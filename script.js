@@ -99,6 +99,30 @@ function animateSquare(selector){
     }
 
 
+    function playHintSequence() {
+        if (startButton){
+            startButton.remove()
+        }
+        messageElement.innerText = "Simon Says!"
+        let delay = gameSpeed
+        console.log(userChoices.length)
+        console.log(computerChoices.length)
+        for (let i = userChoices.length; i < computerChoices.length; i++) {
+            setTimeout(function () {
+               animateSquare(computerChoices[i])
+            }, delay)
+            delay += gameSpeed
+        }
+        setTimeout(function (){
+            messageElement.innerText = "Your Turn! 😉"
+            enableDisableGameButtons()
+            buttonsOn = true        
+        }, gameSpeed * ((computerChoices.length - userChoices.length) + 1))
+
+        hintsButton.addEventListener("click", playHint)
+    }
+
+
     function evaluateRound(){
         for(i=0;i<userChoices.length;i++){
             if(userChoices[i] != computerChoices[i]){
@@ -156,9 +180,11 @@ function animateSquare(selector){
         document.querySelector("body").classList.toggle("dark-mode")
         if (document.querySelector("body").classList.contains("dark-mode")){
             darkModeButton.innerText = "Disable Dark Mode"
+            document.querySelector(".modal-content").style.backgroundColor = "rgb(77, 23, 255)"
         }
         else {
             darkModeButton.innerText = "Enable Dark Mode"
+            document.querySelector(".modal-content").style.backgroundColor = "#fefefe"
         }
     }
 
@@ -246,7 +272,7 @@ function animateSquare(selector){
         if(hints > 0 && buttonsOn){
             document.querySelector("#hints-button").style.cursor = "pointer"
             enableDisableGameButtons()
-            playSequence()
+            playHintSequence()
             hints -= 1
             document.querySelector("#hints-text").innerText = `Hints: ${hints}`
         }
