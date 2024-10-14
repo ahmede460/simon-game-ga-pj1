@@ -322,6 +322,13 @@ ul > h1 {
 
   @media only screen and (max-width: 600px) {
 
+
+
+
+    .left-side-text{
+        margin: 15px 0px 0px 0px;
+    }
+
     #top-header{
         font-size: 20px;
         position: relative;
