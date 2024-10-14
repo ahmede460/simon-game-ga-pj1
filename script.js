@@ -105,8 +105,6 @@ function animateSquare(selector){
         }
         messageElement.innerText = "Simon Says!"
         let delay = gameSpeed
-        console.log(userChoices.length)
-        console.log(computerChoices.length)
         for (let i = userChoices.length; i < computerChoices.length; i++) {
             setTimeout(function () {
                animateSquare(computerChoices[i])
@@ -254,7 +252,6 @@ function animateSquare(selector){
 
         sortedTop3 = highScores.sort((a, b) => b.levelReached - a.levelReached)
 
-        console.log(sortedTop3)
 
         document.querySelector("#high-score").innerHTML = "Top 3 High Scores"
         for (i=0;i<3;i++){

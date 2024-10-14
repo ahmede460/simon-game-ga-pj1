@@ -1,89 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simon's Game</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
     <script defer src="./script.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div id="end-game-overlay" class="no-overlay overlay">
-        <h2 id="end-game">You've reached level 1</h2>
-        <p>Don't go away just yet..</p>
-        <p>write your name below so others can see that</p>
-        <input id="username" type="text" />
-        <button id="submit" type="submit">Submit and Play Again!</button>
+      <h2 id="end-game">You've reached level 1</h2>
+      <p>Don't go away just yet..</p>
+      <p>write your name below so others can see that</p>
+      <input id="username" type="text" />
+      <button id="submit" type="submit">Submit and Play Again!</button>
     </div>
-    
-    <header class="header"> <label id="hamburger-icon" for="hamburger-btn">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </label>
-        <input id="hamburger-btn" type="checkbox" />
 
-         <nav>
-      <ul class="menu">
-        <h1>Game Setting</h1>
-       <button id="dark-mode" class="menu-button">Enable Dark Mode</button>
-       <button id="sound-button" class="menu-button">Disable Audio</button>
-       <button id="color-blind-button" class="menu-button">Enable Color Blind Mode</button>
-       <button id="easy-mode-button" class="menu-button">Easy Mode</button>
-       <button id="normal-mode-button" class="menu-button">Normal Mode</button>
-       <button id="hard-mode-button" class="menu-button">Hard Mode</button>
-      </ul>
-    </nav>
+    <header class="header">
+      <label id="hamburger-icon" for="hamburger-btn">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+      <input id="hamburger-btn" type="checkbox" />
 
-        <div id="top-header">Welcome to Simon Says!
-            
-        </div>
+      <nav>
+        <ul class="menu">
+          <h1>Game Setting</h1>
+          <button id="dark-mode" class="menu-button">Enable Dark Mode</button>
+          <button id="sound-button" class="menu-button">Disable Audio</button>
+          <button id="color-blind-button" class="menu-button">
+            Enable Color Blind Mode
+          </button>
+          <button id="easy-mode-button" class="menu-button">Easy Mode</button>
+          <button id="normal-mode-button" class="menu-button">
+            Normal Mode
+          </button>
+          <button id="hard-mode-button" class="menu-button">Hard Mode</button>
+        </ul>
+      </nav>
+
+      <div id="top-header">Welcome to Simon Says!</div>
     </header>
-    
-    <div class="left-side-text"> 
-         <p id="difficulty">Difficulty: Normal</p>
-          <p id="hints-text">Hints: 1</p>
-    <button id="hints-button">💡</button>
-    <ul id="high-score">Top 3 High Scores
+
+    <div class="left-side-text">
+      <p id="difficulty">Difficulty: Normal</p>
+      <p id="hints-text">Hints: 1</p>
+      <button id="hints-button">💡</button>
+      <ul id="high-score">
+        Top 3 High Scores
         <li>🔥Ahmed Jaafar🔥 - Level 1</li>
+      </ul>
+    </div>
 
-    </ul>
-
-    
-   
-
-    <div class="flex-container"> <button class="start-button">START</button>
-        <label id="level" class="level" for="">Level: </label>
-        <h1 id="user-message">Click Start to Play</h1>
-        <div class="game-buttons">
-
-            <div class="flex-row">
-                <div id="green" class="square"></div>
-                <div id="red" class="square"></div>
-            </div>
-            <div class="flex-row">
-                <div id="yellow" class="square"></div>
-                <div id="blue" class="square"></div>
-
-            </div>
+    <div class="flex-container">
+      <button class="start-button">START</button>
+      <label id="level" class="level" for="">Level: </label>
+      <h1 id="user-message">Click Start to Play</h1>
+      <div class="game-buttons">
+        <div class="flex-row">
+          <div id="green" class="square"></div>
+          <div id="red" class="square"></div>
         </div>
+        <div class="flex-row">
+          <div id="yellow" class="square"></div>
+          <div id="blue" class="square"></div>
+        </div>
+      </div>
     </div>
 
-</div>
-
-
-<div id="alert-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p id="modal-text">You are on your own, no more hints 😟</p>
+    <div id="alert-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modal-text">You are on your own, no more hints 😟</p>
+      </div>
     </div>
-
-
-
-
-</body>
-
+  </body>
 </html>
