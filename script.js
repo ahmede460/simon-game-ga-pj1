@@ -231,6 +231,7 @@ function animateSquare(selector){
 
     function submitName(){
         updateHighscore()
+        document.querySelector("#username").value = ""
         endGameElement.classList.toggle("no-overlay")
         lose = false
         computerChoices = []
