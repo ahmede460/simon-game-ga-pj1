@@ -20,7 +20,12 @@ Game link: [Simon Game](https://simon.ahmedjaffar.com)
 
 >**Tip**: If you are stuck, you can use the hints button which will play for you the rest of the sequence
 
-4. **When you are successfull you will go to the next level as shown below.** ![](./readme-images/levelup.png)
+4. **When you are successfull you will go to the next level as shown below.** ![Level up indicator](./readme-images/levelup.png)
+
+
+### Extra Features
+
+- Check out the extra features by clicking on the hamburger icon as shown below. ![Extra features](./readme-images/extra.png)
 
 
 
@@ -36,5 +41,13 @@ Game link: [Simon Game](https://simon.ahmedjaffar.com)
 - For the end game I've used [W3Schools Overlay Guide](https://www.w3schools.com/howto/howto_css_overlay.asp) as a base and built on it.
 
 
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+
+
+## Next Steps
+I would love to make the game more dynamic with more user inputs that would alter the game.
 
 
